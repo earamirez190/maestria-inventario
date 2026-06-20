@@ -1,0 +1,28 @@
+name: PR Develop
+
+on:
+  push:
+    branches:
+      - develop
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  create-pull-request:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Crear Pull Request automático a Laboratory
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          base: laboratory   # 👈 Rama destino del PR
+          branch: develop    # 👈 Rama origen del PR (la que hiciste push)
+          title: "PR: Merge develop into laboratory"
+          body: |
+            Este PR fue generado automáticamente desde la rama **develop** hacia **laboratory**.
+            Se requiere revisión y aprobación antes de hacer merge.
