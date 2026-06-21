@@ -1,0 +1,25 @@
+name: Integracion Develop
+on:
+  pull_request:
+    branches:
+      - develop
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargando el repo para hacer CI
+        uses: actions/checkout@v6
+
+      - name: Instalar Java
+        uses: actions/setup-java@v5
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+      - name: Instalar Gradle
+        uses: gradle/actions/setup-gradle@v6
+
+      - name: Dar permisos de ejecución al wrapper
+        run: chmod +x gradlew
+
+      - name: Compilar con gradle
+        run: ./gradlew build
