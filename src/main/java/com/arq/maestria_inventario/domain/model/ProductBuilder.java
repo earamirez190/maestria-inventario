@@ -26,14 +26,12 @@ public class ProductBuilder {
         return this;
     }
 
-    // Getters para que Product pueda leer los datos acumulados
     public String getId() { return id; }
     public String getName() { return name; }
     public int getQuantity() { return quantity; }
     public double getPrice() { return price; }
 
     public Product build() {
-        // Llama al constructor de la otra clase
         return new Product(this);
     }
 }

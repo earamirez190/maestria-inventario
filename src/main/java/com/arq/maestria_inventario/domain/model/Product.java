@@ -6,8 +6,6 @@ public class Product {
     private int quantity;
     private double price;
 
-    // Cambiado a "package-private" (le quitamos el private)
-    // para que ProductBuilder pueda invocarlo desde su propio archivo.
     Product(ProductBuilder builder) {
         this.id = builder.getId();
         this.name = builder.getName();
