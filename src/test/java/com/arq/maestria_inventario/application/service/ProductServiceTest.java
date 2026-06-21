@@ -19,7 +19,7 @@ class ProductServiceTest {
 
     @BeforeEach
     void setUp() {
-        // Creamos un simulacro (mock) del repositorio sin levantar Spring
+
         productRepository = Mockito.mock(ProductRepository.class);
         productService = new ProductService(productRepository);
     }
@@ -33,7 +33,6 @@ class ProductServiceTest {
                 .price(-5.0)
                 .build();
 
-        // Verificamos que la regla de negocio lance la excepción esperada
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
             productService.createProduct(invalidProduct);
         });
